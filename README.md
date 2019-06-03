@@ -10,3 +10,4 @@
 > - [Readonly-filesystem-issue](read-only-file-system.ipynb)
 > - [DHCP-Server](dhcp-server.ipynb)
 > - [Linux-GDB](gdb.ipynb)
+> - [Cscope](cscope.ipynb)
