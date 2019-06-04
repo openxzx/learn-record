@@ -12,3 +12,4 @@
 > - [Linux-GDB](gdb.ipynb)
 > - [Cscope](cscope.ipynb)
 > - [GNU attribute](attribute.ipynb)
+> - [Git submodule](git-submodule.ipynb)
