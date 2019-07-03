@@ -16,3 +16,4 @@
 > - [Py-Format](py-format.ipynb)
 > - [USB Device Configuration](usb-device.ipynb)
 > - [Goto](goto.ipynb)
+> - [Ubuntu_Python_Version](Ubuntu-python-version.ipynb)
