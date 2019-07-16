@@ -1,6 +1,6 @@
-# learning-journal
+# Learning records
 
-[Check jupyter notebook showing](https://nbviewer.jupyter.org/)
+[Check jupyter notebook web](https://nbviewer.jupyter.org/)
 
 ## Catalogue
 
