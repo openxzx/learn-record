@@ -20,5 +20,5 @@
 > - [RL8152](RL8152-driver.ipynb)
 > - [DMA](DMA.ipynb)
 > - [dmesg](dmesg.ipynb)
-> - [yield](yield.ipynb)
+> - [Py-yield](py-yield.ipynb)
 > - [Py-struct](Pystruct.ipynb)
