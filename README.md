@@ -24,3 +24,4 @@
 > - [Py-struct](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Pystruct.ipynb)
 > - [IIC](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/IIC.ipynb)
 > - [SPI](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/SPI.ipynb)
+> - [Py-file-zlib-binascii](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Py-file-zlib-binascii.ipynb)
