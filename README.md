@@ -16,7 +16,7 @@
 > - [Py-Format](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-format.ipynb)
 > - [USB-Device-Configuration](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/usb-device.ipynb)
 > - [Py-Goto](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Pygoto.ipynb)
-> - [Ubuntu-python-library-version](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Ubuntu-python-version.ipynb)
+> - [Ubuntu-python-library-version](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Ubuntu-python-library-version.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/RL8152-driver.ipynb)
 > - [DMA](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/DMA.ipynb)
 > - [dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dmesg.ipynb)
