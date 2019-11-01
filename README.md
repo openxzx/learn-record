@@ -28,3 +28,4 @@
 > - [Font-color](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/font-color.ipynb)
 > - [CH-chip](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/ch-chip.ipynb)
 > - [Call-subdir](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/call-subdir.ipynb)
+> - [Upgrade-pip](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/upgrade-pip.ipynb)
