@@ -30,3 +30,4 @@
 > - [Call-subdir](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/call-subdir.ipynb)
 > - [Upgrade-pip](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/upgrade-pip.ipynb)
 > - [spam](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/spam.ipynb)
+> - [lambda](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-lambda.ipynb)
