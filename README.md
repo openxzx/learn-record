@@ -5,7 +5,7 @@
 ## Catalogue
 
 > - [Preface](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/preface.ipynb)
-> - [Py-Matplotlib-3D](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/pymatplotlib-3d.ipynb)
+> - [Py-Matplotlib](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-matplotlib.ipynb)
 > - [Py-Signal](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/pysignal.ipynb)
 > - [Readonly-filesystem-issue](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/read-only-file-system.ipynb)
 > - [DHCP-Server](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dhcp-server.ipynb)
