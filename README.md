@@ -31,3 +31,4 @@
 > - [Upgrade-pip](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/upgrade-pip.ipynb)
 > - [spam](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/spam.ipynb)
 > - [lambda](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-lambda.ipynb)
+> - [reverse](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/reserse.ipynb)
