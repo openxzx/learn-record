@@ -16,7 +16,7 @@
 > - [Py-Format](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-format.ipynb)
 > - [USB-Device-Configuration](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/usb-device.ipynb)
 > - [Py-Goto](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-goto.ipynb)
-> - [Ubuntu-python-library-version](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Ubuntu-python-library-version.ipynb)
+> - [Py-library-install](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Ubuntu-python-library-version.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/RL8152-driver.ipynb)
 > - [DMA](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/DMA.ipynb)
 > - [Dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dmesg.ipynb)
@@ -32,3 +32,4 @@
 > - [Cython-spam](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/cython-spam.ipynb)
 > - [Py-lambda](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-lambda.ipynb)
 > - [Reverse](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/reverse.ipynb)
+> - [Py-setup.py](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-setup.ipynb)
