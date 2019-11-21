@@ -11,7 +11,7 @@
 > - [DHCP-Server](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dhcp-server.ipynb)
 > - [Linux-GDB](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/gdb.ipynb)
 > - [Cscope](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/cscope.ipynb)
-> - [GNU-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/attribute.ipynb)
+> - [GNUC-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/gnuc-attribute.ipynb)
 > - [Git-submodule](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/git-submodule.ipynb)
 > - [Py-Format](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-format.ipynb)
 > - [USB-Device-Configuration](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/usb-device.ipynb)
