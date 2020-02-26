@@ -38,3 +38,4 @@
 > - [Network](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/network.ipynb)
 > - [Py-class](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-class.ipynb)
 > - [HexStringToBytearray](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/HexStringToBytearray.ipynb)
+> - [ListRepetitionTest](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/list-repetition-test.ipynb)
