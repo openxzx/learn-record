@@ -40,3 +40,4 @@
 > - [HexStringToBytearray](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/HexStringToBytearray.ipynb)
 > - [ListRepetitionTest](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/list-repetition-test.ipynb)
 > - [STM8](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/stm8.ipynb)
+> - [USER-KERNEL-SW](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/user-kernel-switch.ipynb)
