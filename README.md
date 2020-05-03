@@ -1,27 +1,15 @@
 # Learning records
 
-[Check jupyter notebook web](https://nbviewer.jupyter.org/)
-
-## Catalogue
-
-> - [Preface](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/preface.ipynb)
-> - [Py-Matplotlib](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-matplotlib.ipynb)
-> - [Py-Signal](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-signal.ipynb)
 > - [Readonly-filesystem-issue](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/read-only-file-system.ipynb)
 > - [DHCP-Server](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dhcp-server.ipynb)
 > - [Linux-GDB](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/gdb.ipynb)
 > - [Cscope](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/cscope.ipynb)
 > - [GNUC-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/gnuc-attribute.ipynb)
 > - [Git-submodule](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/git-submodule.ipynb)
-> - [Py-Format](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-format.ipynb)
 > - [USB-Device-Configuration](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/usb-device.ipynb)
-> - [Py-Goto](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-goto.ipynb)
-> - [Py-library-install](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/Ubuntu-python-library-version.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/RL8152-driver.ipynb)
 > - [DMA](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/DMA.ipynb)
 > - [Dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dmesg.ipynb)
-> - [Py-yield](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-yield.ipynb)
-> - [Py-struct](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-struct.ipynb)
 > - [IIC](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/IIC.ipynb)
 > - [SPI](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/SPI.ipynb)
 > - [Py-file-zlib-binascii](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-file-zlib-binascii.ipynb)
