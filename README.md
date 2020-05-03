@@ -1,10 +1,6 @@
 # Learning records
 
-> - [Readonly-filesystem-issue](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/read-only-file-system.ipynb)
-> - [DHCP-Server](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/dhcp-server.ipynb)
-> - [Linux-GDB](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/gdb.ipynb)
 > - [Cscope](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/cscope.ipynb)
-> - [GNUC-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/gnuc-attribute.ipynb)
 > - [Git-submodule](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/git-submodule.ipynb)
 > - [USB-Device-Configuration](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/usb-device.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/RL8152-driver.ipynb)
