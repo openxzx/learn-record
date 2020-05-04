@@ -12,3 +12,4 @@
 > - [Py-subdir-call](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/subdir-call/py-subdir-call.ipynb)
 > - [Py-lambda](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/lambda/py-lambda.ipynb)
 > - [Reverse](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/reverse/py-reverse.ipynb)
+> - [Py-setup.py](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/setup/py-setup.ipynb)
