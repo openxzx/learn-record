@@ -1,6 +1,5 @@
 # Learning records
 
-> - [Git-submodule](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/git-submodule.ipynb)
 > - [USB-Device-Configuration](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/usb-device.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/RL8152-driver.ipynb)
 > - [DMA](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/DMA.ipynb)
