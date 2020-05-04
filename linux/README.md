@@ -9,3 +9,4 @@
 > - [Dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/dmesg/dmesg.ipynb)
 > - [Network](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/network/network.ipynb)
 > - [App-Kernel](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/app-kernel/user-kernel-switch.ipynb)
+> - [Clib-manpages](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/manpages/clib-manpages.ipynb)
