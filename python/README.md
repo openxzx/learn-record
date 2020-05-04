@@ -10,3 +10,4 @@
 > - [Py-zlib-binascii](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/zlib-binascii/py-zlib-binascii.ipynb)
 > - [Py-font-color](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/font-color/py-font-color.ipynb)
 > - [Py-subdir-call](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/subdir-call/py-subdir-call.ipynb)
+> - [Py-lambda](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/lambda/py-lambda.ipynb)
