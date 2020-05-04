@@ -1,6 +1,5 @@
 # Learning records
 
-> - [Py-upgrade-pip](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-upgrade-pip.ipynb)
 > - [Py-lambda](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-lambda.ipynb)
 > - [Reverse](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/reverse.ipynb)
 > - [Py-setup.py](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-setup.ipynb)
