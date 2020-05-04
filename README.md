@@ -1,6 +1,5 @@
 # Learning records
 
-> - [Font-color](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/font-color.ipynb)
 > - [Py-call-subdir](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-call-subdir.ipynb)
 > - [Py-upgrade-pip](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-upgrade-pip.ipynb)
 > - [Cython-spam](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/cython-spam.ipynb)
