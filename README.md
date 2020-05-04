@@ -1,6 +1,5 @@
 # Learning records
 
-> - [IIC](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/IIC.ipynb)
 > - [SPI](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/SPI.ipynb)
 > - [Py-file-zlib-binascii](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/py-file-zlib-binascii.ipynb)
 > - [Font-color](https://nbviewer.jupyter.org/github/openxzx/learn-record/blob/master/files/font-color.ipynb)
