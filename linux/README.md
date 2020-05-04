@@ -7,3 +7,5 @@
 > - [USB-Device](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/usbdev/usb-device.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/RL8152/RL8152-driver.ipynb)
 > - [Dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/dmesg/dmesg.ipynb)
+> - [Network](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/network/network.ipynb)
+> - [App-Kernel](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/app-kernel/user-kernel-switch.ipynb)
