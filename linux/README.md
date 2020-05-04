@@ -6,3 +6,4 @@
 > - [C-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/c-attribute.ipynb)
 > - [USB-Device](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/usbdev/usb-device.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/RL8152/RL8152-driver.ipynb)
+> - [Dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/dmesg/dmesg.ipynb)
