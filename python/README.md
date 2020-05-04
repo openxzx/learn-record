@@ -13,3 +13,4 @@
 > - [Py-lambda](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/lambda/py-lambda.ipynb)
 > - [Py-Reverse](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/reverse/py-reverse.ipynb)
 > - [Py-setup.py](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/setup/py-setup.ipynb)
+> - [Py-class](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/class/py-class.ipynb)
