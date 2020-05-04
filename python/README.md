@@ -15,3 +15,4 @@
 > - [Py-setup.py](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/setup/py-setup.ipynb)
 > - [Py-class](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/class/py-class.ipynb)
 > - [Py-hexstring-bytearray](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/hexstring-bytearray/py-hexstring-bytearray.ipynb)
+> - [Py-list-repetition](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/list-repetition/py-list-repetition.ipynb)
