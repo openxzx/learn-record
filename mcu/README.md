@@ -2,3 +2,4 @@
 
 > - [DMA](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/dma/DMA.ipynb)
 > - [IIC](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/iic/IIC.ipynb)
+> - [SPI](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/spi/SPI.ipynb)
