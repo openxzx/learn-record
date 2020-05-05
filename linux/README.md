@@ -3,7 +3,7 @@
 > - [Readonly-filesystem-issue](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/readonly/readonly-system-issue.ipynb)
 > - [DHCP-Server](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/dhcp/dhcp-server.ipynb)
 > - [GDB](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/gdb/gdb.ipynb)
-> - [C-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/c-attribute.ipynb)
+> - [C-attribute](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/c-attribute/c-attribute.ipynb)
 > - [USB-Device](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/usbdev/usb-device.ipynb)
 > - [RL8152](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/RL8152/RL8152-driver.ipynb)
 > - [Dmesg](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/dmesg/dmesg.ipynb)
