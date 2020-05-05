@@ -12,7 +12,7 @@
 > - [Py-subdir-call](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/subdir-call/py-subdir-call.ipynb)
 > - [Py-lambda](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/lambda/py-lambda.ipynb)
 > - [Py-Reverse](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/reverse/py-reverse.ipynb)
-> - [Py-setup.py](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/setup/py-setup.ipynb)
+> - [Py-setup](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/setup/py-setup.ipynb)
 > - [Py-class](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/class/py-class.ipynb)
 > - [Py-hexstring-bytearray](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/hexstring-bytearray/py-hexstring-bytearray.ipynb)
 > - [Py-list-repetition](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/python/list-repetition/py-list-repetition.ipynb)
