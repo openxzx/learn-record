@@ -10,3 +10,4 @@
 > - [Network](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/network/network.ipynb)
 > - [App-Kernel](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/app-kernel/user-kernel-switch.ipynb)
 > - [Clib-manpages](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/manpages/clib-manpages.ipynb)
+> - [i2c-gpio](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/i2c-gpio/i2c-gpio.ipynb)
