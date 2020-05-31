@@ -1,0 +1,339 @@
+commit 65ad9626d1a594c09b31e927d1512cfa89be7ea6
+Author: xuzhenxing <xzxlnmail@163.com>
+Date:   Sun May 31 00:51:35 2020 -0700
+
+    Add SX1276 sending downlink datas
+
+diff --git a/package/lora/libloragw/src/libloragw/inc/loragw_hal.h b/package/lora/libloragw/src/libloragw/inc/loragw_hal.h
+index 0f2bdf43..82c3d9cc 100755
+--- a/package/lora/libloragw/src/libloragw/inc/loragw_hal.h
++++ b/package/lora/libloragw/src/libloragw/inc/loragw_hal.h
+@@ -307,6 +307,8 @@ struct lgw_tx_gain_lut_s {
+ /******************** add by XUYUTAO **************************************/
+ #define SUPPORT_SX1301_MAX 2
+ 
++#define SUPPORT_SX1276_MAX 1
++
+ typedef struct _spi{
+     void *lgw_spi_target;
+     uint8_t lgw_spi_mux_mode;
+@@ -380,6 +382,17 @@ typedef struct _lgw_context{
+     int32_t offset_count_us;
+ } lgw_context;
+ 
++
++typedef struct _lgw_context_sx1276 {
++    uint32_t    reset_pin;
++    uint32_t    uart;
++
++    bool lorawan_public;
++
++    struct timeval offset_unix_concent;
++    int32_t offset_count_us;
++} lgw_context_sx1276;
++
+ /**************************************************************************/
+ /**************************************************************************/
+ /**************************************************************************/
+diff --git a/package/lora/packet_forwarder/src/lora_pkt_fwd/src/lora_pkt_fwd.c b/package/lora/packet_forwarder/src/lora_pkt_fwd/src/lora_pkt_fwd.c
+index d5cb76ca..7995e247 100755
+--- a/package/lora/packet_forwarder/src/lora_pkt_fwd/src/lora_pkt_fwd.c
++++ b/package/lora/packet_forwarder/src/lora_pkt_fwd/src/lora_pkt_fwd.c
+@@ -85,6 +85,7 @@ typedef struct _lora_led{
+ }lora_led;
+ 
+ lgw_context * g_ctx_arr[SUPPORT_SX1301_MAX] = {NULL};
++lgw_context * g_ctx_sx1276_arr[SUPPORT_SX1276_MAX] = {NULL};
+ lora_led g_led_arr[SUPPORT_SX1301_MAX] = {{0}};
+ 
+ //lgw_context * ctx_tx  = NULL; 
+@@ -244,6 +245,7 @@ bool is_lorawan = true;
+ 
+ /* hardware access control and correction */
+ pthread_mutex_t mx_concent = PTHREAD_MUTEX_INITIALIZER; /* control access to the concentrator */
++pthread_mutex_t mx_concent_sx1276 = PTHREAD_MUTEX_INITIALIZER; /* control access to the concentrator */
+ static pthread_mutex_t mx_xcorr = PTHREAD_MUTEX_INITIALIZER; /* control access to the XTAL correction */
+ static bool xtal_correct_ok = false; /* set true when XTAL correction is stable enough */
+ static double xtal_correct = 1.0;
+@@ -348,7 +350,7 @@ char * data_recovery_path = NULL;
+ static uint32_t autoquit_error_crc = 30;
+ 
+ /* Just In Time TX scheduling */
+-static struct jit_queue_s jit_queue[SUPPORT_SX1301_MAX];/* multi downlink support */
++static struct jit_queue_s jit_queue[SUPPORT_SX1276_MAX];/* multi downlink support */
+ 
+ /* Gateway specificities */
+ static int8_t antenna_gain = 0;
+@@ -1605,10 +1607,10 @@ int get_iface_ip(const char *ifname, struct sockaddr_in * addr)
+ /*
+  * UsbToUart communication interfaces
+  */
+-const char *uart_dev[] = {
++const char *uart_dev[SUPPORT_SX1276_MAX] = {
+     "/dev/ttyUSB0",
+ };
+-int uart_fd[1];
++int uart_fd[SUPPORT_SX1276_MAX];
+ 
+ /* CRC8 polynomial expression 0x07(10001110) */
+ uint8_t crc_check(uint8_t *data, uint8_t len)
+@@ -1873,6 +1875,31 @@ int lora_uart_write_downlink(const int fd, uint8_t port, uint8_t func, struct lg
+     return lora_uart_write(fd, buff, size);
+ }
+ 
++lgw_context_sx1276 * lgw_context_sx1276_init(int index)
++{
++    lgw_context_sx1276 * ctx = NULL;
++
++    ctx = (lgw_context_sx1276 *)malloc(sizeof(lgw_context_sx1276));
++    if( NULL == ctx ){
++        DEBUG_MSG("ERROR: malloc lgw context sx1276 error\n");
++        return NULL;
++    }
++
++    memset(ctx, 0x00, sizeof(lgw_context_sx1276));
++
++    ctx->uart = lora_uart_open(uart_dev[index]);
++    if (ctx->uart == -1) {
++        MSG(LOG_ERR, "ERROR: Open faild, index: %d.\n", index);
++        exit(EXIT_FAILURE);
++    }
++
++    if (lora_uart_set_port(ctx->uart, 115200, 8, 1, 'N') == -1) {
++        MSG(LOG_ERR, "ERROR: Set port failed, index: %d\n", index);
++        exit(EXIT_FAILURE);
++    }
++
++    return ctx;
++}
+ 
+ static int main_loop()
+ {
+@@ -1955,6 +1982,8 @@ static int main_loop()
+ 
+     uint32_t rx_error_crc_num = 0;
+ 
++    lgw_context_sx1276 * ctx_sx1276 = NULL;
++
+     /* display version informations */
+     MSG(LOG_INFO,"*** Beacon Packet Forwarder for Lora Gateway ***\nVersion: " VERSION_STRING "\n");
+     MSG(LOG_INFO,"*** Lora concentrator HAL library version info ***\n%s\n***\n", lgw_version_info());
+@@ -2051,20 +2080,14 @@ static int main_loop()
+     }
+     
+     /* Open UsbToUart device file */
+-    for (i = 0; i < 1; i++) {
+-        uart_fd[i] = lora_uart_open(uart_dev[i]);
+-        if (uart_fd[i] == -1) {
+-            MSG(LOG_ERR, "ERROR: Open faild, uart_fd[%d]: %d\n", i, uart_fd[i]);
+-            exit(EXIT_FAILURE);
+-        }
+-
+-        if (lora_uart_set_port(uart_fd[i], 115200, 8, 1, 'N') == -1) {
+-            MSG(LOG_ERR, "ERROR: Uart%d set port failed.\n", i, uart_fd[i]);
++    for (i = 0; i < SUPPORT_SX1276_MAX; i++) {
++        ctx_sx1276 = lgw_context_sx1276_init(i);
++        if (NULL == ctx_sx1276) {
++            MSG(LOG_INFO, "ERROR: context sx1276 init error!\n");
+             exit(EXIT_FAILURE);
+         }
+ 
+-        lora_uart_read_version(uart_fd[i]);
+-        lora_uart_read_rtc(uart_fd[i]);
++        g_ctx_sx1276_arr[i] = ctx_sx1276;
+     }
+ 
+     while(!exit_sig && !quit_sig )
+@@ -2417,20 +2440,17 @@ static int main_loop()
+         MSG(LOG_NOTICE,"### [JIT] ###\n");
+         /* get timestamp captured on PPM pulse  */
+ 
+-        for( idx = 0; idx < g_sx1301_nb; idx++){
+-            if( NULL == g_ctx_arr[idx] )
++        /* Downlink for SX1276 now */
++        for( idx = 0; idx < SUPPORT_SX1276_MAX; idx++){
++            if( NULL == g_ctx_sx1276_arr[idx] )
+                 break;
+             pthread_mutex_lock(&mx_concent);
+-            i = lgw_get_trigcnt(&trig_tstamp,&(g_ctx_arr[idx]->spi));
++            trig_tstamp = lgw_uart_read_timer(g_ctx_sx1276_arr[idx]->uart);
+             pthread_mutex_unlock(&mx_concent);
+-            if (i != LGW_HAL_SUCCESS) {
+-                MSG(LOG_NOTICE,"# SX1301 time (PPS): unknown\n");
+-            } else {
+-                MSG(LOG_NOTICE,"# SX1301 time (PPS): %u, offset us %d\n", trig_tstamp, g_ctx_arr[idx]->offset_count_us);
+-            }
++            MSG(LOG_NOTICE,"# SX1276 time (PPS): %u, offset us: %d\n", trig_tstamp, g_ctx_sx1276_arr[idx]->offset_count_us);
+         }
+ 
+-        for( idx = 0; idx < g_sx1301_nb; idx++ ){
++        for( idx = 0; idx < SUPPORT_SX1276_MAX; idx++ ){
+             jit_print_queue (&jit_queue[idx], false, DEBUG_LOG); 
+         }
+ 
+@@ -2932,7 +2952,7 @@ void thread_up(void) {
+                     buff_index += 2;
+                 }
+                 
+-                p->count_us += (g_ctx_arr[n]->offset_count_us);
++                p->count_us += (g_ctx_sx1276_arr[n]->offset_count_us);
+                 
+                 p->rf_chain += (n * 2);
+ 
+@@ -4258,29 +4278,26 @@ void thread_down(void) {
+                 }
+                 
+             }
++
++            /* How to insert down queue */
+             o_count_us = txpkt.count_us;
+             /* insert packet to be sent into JIT queue */
+             if (jit_result == JIT_ERROR_OK) {
+-                
+-                /* First try to transmit on the sx1301 where the upstream packet recv */
+-            
+-                int ctx_id = ((target_rf_chain/2) < g_sx1301_nb) ? (target_rf_chain/2) : 0;
+-
++                /* First try to transmit on the first sx1276 */
++                ctx_id = 0;
+                 gettimeofday(&current_unix_time, NULL);
+-                get_concentrator_time(&current_concentrator_time, current_unix_time, g_ctx_arr[ctx_id]);
+-                txpkt.count_us = o_count_us - g_ctx_arr[ctx_id]->offset_count_us; // count_us sx1031[0] --> sx1301[i]
++                get_concentrator_time(&current_concentrator_time, current_unix_time, g_ctx_sx1276_arr[ctx_id]);
++                txpkt.count_us = o_count_us - g_ctx_sx1276_arr[ctx_id]->offset_count_us; // count_us sx1276[0] --> sx1276[i]
+                 
+                 jit_result = jit_enqueue(&jit_queue[ctx_id], &current_concentrator_time, &txpkt, downlink_type);
+-                
+-                if( jit_result != JIT_ERROR_OK && jit_result != JIT_ERROR_TOO_EARLY && jit_result != JIT_ERROR_TOO_LATE )
+-                {
+-                    for( i = 0 ; i < g_sx1301_nb; i++){
+-                        if( i == ctx_id )
++                if (jit_result != JIT_ERROR_OK && jit_result != JIT_ERROR_TOO_EARLY && jit_result != JIT_ERROR_TOO_LATE) {
++                    for (i = 1; i < SUPPROT_SX1276_MAX; i++) {
++                        if (i == ctx_id)
+                             continue;
+                                                   
+                         gettimeofday(&current_unix_time, NULL);
+-                        get_concentrator_time(&current_concentrator_time, current_unix_time, g_ctx_arr[i]);
+-                        txpkt.count_us = o_count_us - g_ctx_arr[i]->offset_count_us; // count_us sx1031[0] --> sx1301[i]
++                        get_concentrator_time(&current_concentrator_time, current_unix_time, g_ctx_sx1276_arr[i]);
++                        txpkt.count_us = o_count_us - g_ctx_sx1276_arr[i]->offset_count_us; // count_us sx1276[0] --> sx1276[i]
+                         
+                         jit_result = jit_enqueue(&jit_queue[i], &current_concentrator_time, &txpkt, downlink_type);
+                         if (jit_result != JIT_ERROR_OK) {
+diff --git a/package/lora/packet_forwarder/src/lora_pkt_fwd/src/timersync.c b/package/lora/packet_forwarder/src/lora_pkt_fwd/src/timersync.c
+index 6f320581..84e8c76b 100755
+--- a/package/lora/packet_forwarder/src/lora_pkt_fwd/src/timersync.c
++++ b/package/lora/packet_forwarder/src/lora_pkt_fwd/src/timersync.c
+@@ -85,80 +85,69 @@ int get_concentrator_time(struct timeval *concent_time, struct timeval unix_time
+ /* ---------------------------------------------------------------------------------------------- */
+ /* --- THREAD 6: REGULARLAY MONITOR THE OFFSET BETWEEN UNIX CLOCK AND CONCENTRATOR CLOCK -------- */
+ extern lgw_context * g_ctx_arr[];
++extern pthread_mutex_t mx_concent_sx1276;
++extern lgw_context_sx1276 * g_ctx_sx1276_arr[];
+ 
+ void thread_timersync(void) {
+     struct timeval unix_timeval;
+     struct timeval concentrator_timeval;
+-    uint32_t sx1301_0_timecount = 0;
+-    uint32_t sx1301_timecount = 0;
++    uint32_t sx1276_0_timecount = 0;
++    uint32_t sx1276_timecount = 0;
+     struct timeval offset_previous = {0,0};
+     struct timeval offset_drift = {0,0}; /* delta between current and previous offset */
+     int i;
+-    t_spi * spi = NULL;
++    uint32_t uart;
+     
+     while (!exit_sig && !quit_sig) {
+-    
+-        for( i = 0 ;i < SUPPORT_SX1301_MAX; i++ ){
+-            if( NULL == g_ctx_arr[i] )
++        for( i = 0 ;i < SUPPORT_SX1276_MAX; i++ ){
++            if( NULL == g_ctx_sx1276_arr[i] )
+                 break;
+-            spi = &(g_ctx_arr[i]->spi);
+-            
+-            /* Regularly disable GPS mode of concentrator's counter, in order to get
+-                real timer value for synchronizing with host's unix timer */
+-            MSG(LOG_INFO,"\nINFO: Disabling GPS mode for concentrator's counter...\n");
+-            pthread_mutex_lock(&mx_concent);
+-            lgw_reg_w(LGW_GPS_EN, 0, spi);
+-            pthread_mutex_unlock(&mx_concent);
++
++            uart = g_ctr_sx1276_arr[i]->uart;
+ 
+             /* Get current unix time */
+             gettimeofday(&unix_timeval, NULL);
+ 
+-            /* Get current concentrator counter value (1MHz) */
+-            pthread_mutex_lock(&mx_concent);
++            /* Get current concentrator counter value (1MHz), tow 16bits timer make one 32bits timer */
++            pthread_mutex_lock(&mx_concent_sx1276);
+             if( i != 0 ){
+-                lgw_get_trigcnt(&sx1301_0_timecount, &(g_ctx_arr[0]->spi));
++                sx1276_0_timecount = lgw_uart_read_timer(g_ctx_sx1276_arr[0]->uart);
+             }
+-            lgw_get_trigcnt(&sx1301_timecount, spi);
+-            pthread_mutex_unlock(&mx_concent);
++            sx1301_timecount = lgw_uart_read_timer(uart);
++            pthread_mutex_unlock(&mx_concent_sx1276);
+ 
+-            if( 0 != i ){
+-                g_ctx_arr[i]->offset_count_us = sx1301_0_timecount - sx1301_timecount;
+-            }
+-            else{
+-                g_ctx_arr[i]->offset_count_us = 0;
++            if (0 != i) {
++                g_ctx_sx1276_arr[i]->offset_count_us = sx1276_0_timecount - sx1276_timecount;
++            } else {
++                g_ctx_sx1276_arr[i]->offset_count_us = 0;
+             }
+             
+-            concentrator_timeval.tv_sec = sx1301_timecount / 1000000UL;
+-            concentrator_timeval.tv_usec = sx1301_timecount - (concentrator_timeval.tv_sec * 1000000UL);
++            concentrator_timeval.tv_sec = sx1276_timecount / 1000000UL;
++            concentrator_timeval.tv_usec = sx1276_timecount - (concentrator_timeval.tv_sec * 1000000UL);
+ 
+             /* Compute offset between unix and concentrator timers, with microsecond precision */
+-            offset_previous.tv_sec = g_ctx_arr[i]->offset_unix_concent.tv_sec;
+-            offset_previous.tv_usec = g_ctx_arr[i]->offset_unix_concent.tv_usec;
++            offset_previous.tv_sec = g_ctx_sx1276_arr[i]->offset_unix_concent.tv_sec;
++            offset_previous.tv_usec = g_ctx_sx1276_arr[i]->offset_unix_concent.tv_usec;
+ 
+-            /* TODO: handle sx1301 coutner wrap-up */
++            /* TODO: handle sx1276 coutner wrap-up */
+             pthread_mutex_lock(&mx_timersync); /* protect global variable access */
+-            timersub(&unix_timeval, &concentrator_timeval, &(g_ctx_arr[i]->offset_unix_concent));
++            timersub(&unix_timeval, &concentrator_timeval, &(g_ctx_sx1276_arr[i]->offset_unix_concent));
+             pthread_mutex_unlock(&mx_timersync);
+ 
+-            timersub(&(g_ctx_arr[i]->offset_unix_concent), &offset_previous, &offset_drift);
++            timersub(&(g_ctx_sx1276_arr[i]->offset_unix_concent), &offset_previous, &offset_drift);
+ 
+-            MSG_DEBUG(DEBUG_TIMERSYNC, "  sx1301    = %u (µs) - timeval (%ld,%ld)\n",
+-                sx1301_timecount,
++            MSG_DEBUG(DEBUG_TIMERSYNC, "  sx1276    = %u (µs) - timeval (%ld,%ld)\n",
++                sx1276_timecount,
+                 concentrator_timeval.tv_sec,
+                 concentrator_timeval.tv_usec);
+             MSG_DEBUG(DEBUG_TIMERSYNC, "  unix_timeval = %ld,%ld\n", unix_timeval.tv_sec, unix_timeval.tv_usec);
+ 
+-            MSG(LOG_INFO,"INFO: host/sx1301 time offset=(%lds:%ldµs) - drift=%ldµs\n",
+-                g_ctx_arr[i]->offset_unix_concent.tv_sec,
+-                g_ctx_arr[i]->offset_unix_concent.tv_usec,
++            MSG(LOG_INFO,"INFO: host/sx1276 time offset=(%lds:%ldµs) - drift=%ldµs\n",
++                g_ctx_sx1276_arr[i]->offset_unix_concent.tv_sec,
++                g_ctx_sx1276_arr[i]->offset_unix_concent.tv_usec,
+                 offset_drift.tv_sec * 1000000UL + offset_drift.tv_usec);
+-            MSG(LOG_INFO,"INFO: Enabling GPS mode for concentrator's counter.\n\n");
+-            pthread_mutex_lock(&mx_concent); /* TODO: Is it necessary to protect here? */
+-            lgw_reg_w(LGW_GPS_EN, 1, spi);
+-            pthread_mutex_unlock(&mx_concent);
+-
+-           
+         }
++
+         /* delay next sync */
+         /* If we consider a crystal oscillator precision of about 20ppm worst case, and a clock
+             running at 1MHz, this would mean 1µs drift every 50000µs (10000000/20).
