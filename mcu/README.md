@@ -5,3 +5,4 @@
 > - [SPI](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/spi/SPI.ipynb)
 > - [STM8](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/stm8/stm8.ipynb)
 > - [KeilMDK-DebugMode](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/keil/KeilMDK-debug-mode.ipynb)
+> - [Timer](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/stm32-timer/stm32-timer.ipynb)
