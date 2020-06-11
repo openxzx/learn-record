@@ -112,4 +112,84 @@ static void TIM21_Init(void)
     }
 
     /* Timer21 for Master timer, Enable Master/Slave mode */
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+    sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_ENABLE;
+    if (HAL_TIMEx_MasterConfigSynchronization(&htim21, &sMasterConfig) != HAL_OK) {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    /* Starting Timer21 */
+    HAL_TIM_Base_Start(&htim21);
+}
+
+static void TIM22_Init(void)
+{
+    TIM_ClockConfigTypeDef sClockSourceConfig;
+
+    __HAL_RCC_TIM22_CLK_ENABLE();
+
+    htim22.Instance = TIM22;
+    htim22.Init.Prescaler = 16 - 1; /* Using InterClock 16M, this will div 16 for 1MHz */
+    htim22.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim22.Init.Period = 0xFFFF;
+    htim22.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    if (HAL_TIM_Base_Init(&htim22) != HAL_OK) {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+    if (HAL_TIM_ConfigClockSource(&htim22, &sClockSourceConfig) != HAL_OK) {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    HAL_NVIC_SetPriority(TIM22_IRQn, 1, 0);
+    HAL_NVIC_EnableIRQ(TIM22_IRQn);
+}
+
+void (* MicoseondTimerCallback)(void) = NULL;
+
+int MicrosecondTimerStart(uint32_t pkt_count_us, void (*callback)(void))
+{
+    uint32_t timer_tick = 0;
+    uint32_t timer_us = 0;
+    uint32_t diff_us = 0;
+
+    MicoseondTimerCallback = callback;
+
+    timer_us = BoardGetMicroSecond();
+    if (pkt_count_us < timer_us) {
+        diff_us = 0xFFFFFFFF - timer_us + pkt_count_us;
+        if (diff_us > 0x0000FFFF) {
+            return FAIL;
+        }
+    } else {
+        diff_us = pkt_count_us - timer_us;
+		if (diff_us > 0x0000FFFF) {
+            return FAIL;
+        }
+    }
+
+    timer_tick = diff_us + 1;
+
+    __HAL_TIM_SET_COUNTER(&htim22, 0x0000);
+
+    /* Setting timer reload register, in order to change the period */
+    htim22.Instance->ARR = timer_tick;
+
+    /* Starting Timer interrupte */
+    HAL_TIM_Base_Start_IT(&htim22);
+
+    return SUCCESS;
+}
+
+void TIM22_IRQHandler( void )
+{
+    if (MicoseondTimerCallback) {
+        MicoseondTimerCallback();
+    }
+
+    MicoseondTimerCallback = NULL;
+
+    HAL_TIM_IRQHandler(&htim22);
+    HAL_TIM_Base_Stop(&htim22);
 }
