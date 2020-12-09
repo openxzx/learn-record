@@ -8,3 +8,4 @@
 > - [Timer](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/timer/timer.ipynb)
 > - [JFlash](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/jflash/JFlash.ipynb)
 > - [X/Y/Zmodem](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/xyzmodem/xyzmodem.ipynb)
+> - [STM32](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/mcu/stm32/stm32-usb.ipynb)
