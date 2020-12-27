@@ -13,3 +13,4 @@
 > - [I2C-gpio](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/i2c-gpio/i2c-gpio.ipynb)
 > - [Tftp32](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/tftpd32/tftp32.ipynb)
 > - [OpenWrt-Sysupgrade](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/openwrt-sysupgrade/openwrt-sysupgrade.ipynb)
+> - [secureCRT-transmit](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/secureCRT-transmit/secureCRT-transmit.ipynb)
