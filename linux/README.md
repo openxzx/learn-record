@@ -15,3 +15,4 @@
 > - [OpenWrt-Sysupgrade](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/openwrt-sysupgrade/openwrt-sysupgrade.ipynb)
 > - [secureCRT-transmit](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/secureCRT-transmit/secureCRT-transmit.ipynb)
 > - [kernel-gpio](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/kernel-gpio/kernel-gpio.ipynb)
+> - [dts](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/dts/dts.ipynb)
