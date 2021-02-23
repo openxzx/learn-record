@@ -1,4 +1,4 @@
-# Learning records for linux
+# Learning records for linux debug
 
 > - [Readonly-filesystem-issue](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/readonly/readonly-system-issue.ipynb)
 > - [DHCP-Server](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/dhcp/dhcp-server.ipynb)
@@ -14,5 +14,5 @@
 > - [Tftp32](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/tftpd32/tftp32.ipynb)
 > - [OpenWrt-Sysupgrade](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/openwrt-sysupgrade/openwrt-sysupgrade.ipynb)
 > - [secureCRT-transmit](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/secureCRT-transmit/secureCRT-transmit.ipynb)
-> - [kernel-gpio](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/kernel-gpio/kernel-gpio.md)
+> - [kernel-gpio](./docs/kernel-gpio/kernel-gpio.md)
 > - [dts](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/dts/dts.ipynb)
