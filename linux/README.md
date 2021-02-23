@@ -16,3 +16,4 @@
 > - [secureCRT-transmit](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/secureCRT-transmit/secureCRT-transmit.ipynb)
 > - [kernel-gpio](./docs/kernel-gpio/kernel-gpio.md)
 > - [dts](https://nbviewer.jupyter.org/github/openxzx/learn-records/blob/master/linux/docs/dts/dts.ipynb)
+> - [ipq40xx](./ipq-platform/ipq40xx.md)
